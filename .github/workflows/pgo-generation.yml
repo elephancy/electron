@@ -620,6 +620,7 @@ jobs:
     - name: Upload Merged Profiles as Workflow Artifact
       uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
       with:
+        retention-days: 7
         name: pgo-profiles
         path: profiles/
         if-no-files-found: error
