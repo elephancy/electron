@@ -30,7 +30,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          AUTHOR_ASSOCIATION=$(gh api "/repos/$GITHUB_REPOSITORY/pulls/${{ github.event.pull_request.number }}" --jq '.author_association')
+          AUTHOR_ASSOCIATION=$(gh api /repos/electron/electron/pulls/${{ github.event.pull_request.number }} --jq '.author_association')
           echo "author_association=$AUTHOR_ASSOCIATION" >> "$GITHUB_OUTPUT"
       - name: Check for existing review
         id: check-for-review

@@ -514,28 +514,24 @@ runs:
       if: ${{ always() && !cancelled() && inputs.upload-artifacts == 'true' }}
       uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f #v7.0.0
       with:
-        retention-days: 7
         name: generated_artifacts_${{ env.ARTIFACT_KEY }}
         path: ./generated_artifacts_${{ inputs.artifact-platform }}_${{ inputs.target-arch }}
     - name: Upload Src Artifacts ${{ inputs.step-suffix }}
       if: ${{ inputs.generate-test-artifacts == 'true' && inputs.upload-src-artifacts == 'true' && inputs.upload-artifacts == 'true' }}
       uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f #v7.0.0
       with:
-        retention-days: 7
         name: src_artifacts_${{ env.ARTIFACT_KEY }}
         path: ./src_artifacts_${{ inputs.artifact-platform }}_${{ inputs.target-arch }}
     - name: Upload Out Gen Artifacts ${{ inputs.step-suffix }}
       if: ${{ inputs.upload-out-gen-artifacts == 'true' && inputs.upload-artifacts == 'true' }}
       uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f #v7.0.0
       with:
-        retention-days: 7
         name: out_gen_artifacts_${{ env.ARTIFACT_KEY }}
         path: ./src/out/Default/gen
     - name: Upload Object Checksums ${{ inputs.step-suffix }}
       if: ${{ always() && !cancelled() && inputs.is-asan != 'true' && inputs.is-ubsan != 'true' }}
       uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
       with:
-        retention-days: 7
         name: object_checksums_${{ inputs.artifact-platform }}_${{ inputs.target-arch }}
         path: ./src/object-checksums.${{ inputs.artifact-platform }}_${{ inputs.target-arch }}.json
         archive: false
